@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\Peserta;
 
+use App\Exports\ExportPeserta;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Models\BukuInduk;
 use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Downline extends Component
 {
@@ -23,8 +25,18 @@ class Downline extends Component
         ]);
     }
 
+    public function exportExcel()
+    {
+        return Excel::download(new ExportPeserta, 'peserta.xlsx');
+    }
+
     public function showDetails($id)
     {
         return redirect()->to("admin/downline/pemilih/$id");
+    }
+
+    public function showDownline($id)
+    {
+        return redirect()->to("admin/downline/koordinator/$id");
     }
 }

@@ -31,12 +31,12 @@
         <ul>
             @if (auth()->user()->role == 'Koordinator' || auth()->user()->role == 'Administrator')
                 <li class="relative px-6 py-3">
-                    @if (request()->routeIs('admin_downline') || request()->routeIs('admin_downline'))
+                    @if (request()->routeIs('admin_downline') || request()->routeIs('admin_downline') || request()->routeIs('admin_downline_relawan') ||  request()->routeIs('admin_downline_koordinator'))
                         <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                             aria-hidden="true">
                         </span>
                     @endif
-                    <a class="inline-flex items-center w-full text-sm @if (request()->routeIs('admin_downline') || request()->routeIs('admin_downline')) text-gray-800 dark:text-gray-100 @endif font-semibold transition-colors
+                    <a class="inline-flex items-center w-full text-sm @if (request()->routeIs('admin_downline') || request()->routeIs('admin_downline')  || request()->routeIs('admin_downline_relawan') ||  request()->routeIs('admin_downline_koordinator')) text-gray-800 dark:text-gray-100 @endif font-semibold transition-colors
                     duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         href="{{ route('admin_downline') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"

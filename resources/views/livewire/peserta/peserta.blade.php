@@ -20,6 +20,7 @@
                             <input type="text"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
                                 placeholder="Search" required="" wire:model.live.debounce.300ms="search">
+
                         </div>
                     </div>
 
@@ -36,6 +37,7 @@
 
                             <span>Peserta</span>
                         </button>
+
                         <!-- END MODAL TAMBAH -->
 
                         <!-- MODAL  -->

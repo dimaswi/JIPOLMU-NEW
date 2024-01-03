@@ -30,25 +30,23 @@
                             <tr>
                                 <th scope="col" class="px-4 py-3">Nama</th>
                                 <th scope="col" class="px-4 py-3">Alamat</th>
-                                <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">Actions</span>
-                                </th>
+                                <th scope="col" class="px-6 py-3">Umur</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($datas as $key => $value)
-                                <tr class="border-b dark:border-gray-700">
-                                    <td class="px-4 py-3" style="width: 30%">
-                                        {{ $value->nama }}
-                                    </td>
-                                    <td class="px-4 py-3" style="width: 40%">
-                                        {{ $value->domisili }}
-                                    </td>
-                                    <td class="px-4 py-3" style="width: 30%">
-                                        {{ $value->referal }}
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    <tr class="border-b dark:border-gray-700">
+                                        <td class="px-4 py-3" style="width: 25%">
+                                            {{ $value->nama }}
+                                        </td>
+                                        <td class="px-4 py-3" style="width: 25%">
+                                            {{ $value->domisili }}
+                                        </td>
+                                        <td class="px-4 py-3" style="width: 10%">
+                                            {{ \Carbon\Carbon::parse($value->tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%y Tahun') }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                         </tbody>
                     </table>
                 </div>
