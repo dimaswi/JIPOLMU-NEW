@@ -14,6 +14,7 @@
             <th style="width: 200px; font-weight: bold">Nomor Handphone</th>
             <th style="width: 200px; font-weight: bold">Nomor KTP</th>
             <th style="width: 200px; font-weight: bold">TPS</th>
+            <th style="width: 200px; font-weight: bold">Upline</th>
         </tr>
     </thead>
     <tbody>
@@ -30,8 +31,9 @@
                 <td>{{ $value->pekerjaan }}</td>
                 <td>{{ $value->pendidikan }}</td>
                 <td>{{ $value->no_hp }}</td>
-                <td>{{ $value->ktp }}</td>
+                <td>&nbsp;{{ $value->ktp }}</td>
                 <td>{{ $value->tps }}</td>
+                <td>{{ $value->referal }}</td>
             </tr>
         @endforeach
     </tbody>
