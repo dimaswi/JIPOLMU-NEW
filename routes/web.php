@@ -24,7 +24,9 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 */
 
 //General
-Route::get('/', App\Http\Livewire\LandingLivewire::class)->name('landing');
+Route::get('/', function() {
+    return redirect('/login');
+});
 Route::get('/home', App\Http\Livewire\HomeLivewire::class)->name('home')->middleware('auth');
 Route::get('/profile/{userID}', App\Http\Livewire\ProfileLivewire::class)->name('profile');
 Route::get('/stats', App\Http\Livewire\StatsLivewire::class)->name('stats')->middleware('auth');
