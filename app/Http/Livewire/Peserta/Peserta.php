@@ -37,12 +37,12 @@ class Peserta extends Component
     public $tps;
     public $upline;
     public $idData;
-    
+
     public function render()
     {
 
         return view('livewire.peserta.peserta', [
-            'bukuInduk' => BukuInduk::search($this->search)->paginate($this->perPage),
+            'bukuInduk' => BukuInduk::where('referal', auth()->user()->name)->search($this->search)->paginate($this->perPage),
             'kabupatens' => Regency::where('province_id', 35)->get(),
             'kecamatans' => District::where('regency_id', $this->kabupaten)->get(),
             'desas' => Village::where('district_id', $this->kecamatan)->get(),
@@ -67,7 +67,7 @@ class Peserta extends Component
                     'domisili' => 'required',
                     'no_hp' => 'required',
                 ]);
-    
+
                 BukuInduk::create([
                     'referal' => auth()->user()->name,
                     'no_register' => str_pad($last_no_register->no_register + 1, 6, '0', STR_PAD_LEFT),
@@ -89,11 +89,11 @@ class Peserta extends Component
                     'ktp' => $this->ktp,
                     'tps' => $this->tps,
                 ]);
-    
+
                 $this->reset();
                 $this->sendAlert('success', 'Berhasil disimpan!!', 'top-end');
             } catch (\Throwable $th) {
-    
+
                 $validate = $this->validate([
                     'kabupaten' => 'required',
                     'kecamatan' => 'required',
@@ -101,7 +101,7 @@ class Peserta extends Component
                     'domisili' => 'required',
                     'no_hp' => 'required',
                 ]);
-    
+
                 $this->sendAlert('error', $th->getMessage(), 'top-end');
             }
         }
@@ -153,7 +153,7 @@ class Peserta extends Component
             $namakabupaten = Regency::where('id', $this->kabupaten)->first();
             $namakecamatan = District::where('id', $this->kecamatan)->first();
             $namadesa = Village::where('id', $this->desa)->first();
-            
+
             Bukuinduk::where('no', $this->idData)->update([
                 'nama' => $this->nama,
                 'ktp' => $this->ktp,
