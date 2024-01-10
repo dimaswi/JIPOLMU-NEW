@@ -46,6 +46,7 @@ class Peserta extends Component
             'kabupatens' => Regency::where('province_id', 35)->get(),
             'kecamatans' => District::where('regency_id', $this->kabupaten)->get(),
             'desas' => Village::where('district_id', $this->kecamatan)->get(),
+
         ]);
     }
     public function save()
